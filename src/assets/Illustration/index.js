@@ -1,5 +1,7 @@
 import Logo from './Logo.svg';
+import Il_SignUpSUccess from './signup_success.svg';
 
 export {
-    Logo
+    Logo,
+    Il_SignUpSUccess
 }

@@ -2,10 +2,15 @@ import React from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 import { Header, TextInput, Gap, Button } from '../../components'
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
     return (
         <View style={styles.page}>
-            <Header title="Sign Up" subTitle="Register & find the best food" onBack={() => { }} />
+            <Header
+                title="Sign Up"
+                subTitle="Register & find the best food"
+                onBack={() => { }}
+            />
+
             <View style={styles.container}>
                 <View style={styles.photo}>
                     <View style={styles.photoBorder}>
@@ -14,13 +19,31 @@ const SignUp = () => {
                         </View>
                     </View>
                 </View>
-                <TextInput label="Full Name" placeholder="Input your fullname" />
-                <Gap height={16} />
-                <TextInput label="Email" placeholder="Input email address" />
-                <Gap height={16} />
-                <TextInput label="Password" placeholder="Input password" />
-                <Gap height={50} />
-                <Button title="Continue" />
+                <TextInput
+                    label="Full Name"
+                    placeholder="Input your fullname"
+                />
+                <Gap
+                    height={16}
+                />
+                <TextInput
+                    label="Email"
+                    placeholder="Input email address"
+                />
+                <Gap
+                    height={16}
+                />
+                <TextInput
+                    label="Password"
+                    placeholder="Input password"
+                />
+                <Gap
+                    height={50}
+                />
+                <Button
+                    title="Continue"
+                    onPress={() => navigation.navigate('SignUpAddress')}
+                />
             </View>
         </View>
     )
@@ -63,6 +86,7 @@ const styles = StyleSheet.create({
     addPhoto: {
         fontSize: 14,
         color: '#8D92A3',
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingTop: 10
     }
 })
