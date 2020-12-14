@@ -1,17 +1,16 @@
-
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
+import 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Router from './router';
 
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Text>Hello boxfood</Text>
-      </SafeAreaView>
-    </>
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   );
 };
 
