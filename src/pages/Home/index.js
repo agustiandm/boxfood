@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { ProfileDummy } from '../../assets'
+import { ScrollView } from 'react-native-gesture-handler'
+import { FoodDummy1, ProfileDummy } from '../../assets'
+import Gap from '../../components/atoms/Gap'
+import FoodCard from '../../components/molecules/FoodCard'
 
 const Home = () => {
     return (
-        <View>
+        <View >
             <View style={styles.profileContainer}>
                 <View>
                     <Text style={styles.appName}>BoxFood</Text>
@@ -12,6 +15,14 @@ const Home = () => {
                 </View>
                 <Image source={ProfileDummy} style={styles.profile} />
             </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={styles.foodCardContainer}>
+                    <Gap width={16} />
+                    <FoodCard image={FoodDummy1} />
+                    <FoodCard image={FoodDummy1} />
+                    <FoodCard image={FoodDummy1} />
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -42,5 +53,9 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'normal',
         color: '#8D92A3'
+    },
+    foodCardContainer: {
+        flexDirection: 'row',
+        marginTop: 16
     }
 })

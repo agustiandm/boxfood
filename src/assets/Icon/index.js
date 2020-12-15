@@ -5,6 +5,9 @@ import IcOrder from './ic_order.svg';
 import IcOrderOff from './ic_order_normal.svg';
 import IcProfile from './ic_profile.svg';
 import IcProfileOff from './ic_profile_normal.svg';
+import IcStar from './ic_star.svg';
+import IcStarOff from './ic_starOff.svg';
+
 
 export {
     IcBack,
@@ -13,5 +16,7 @@ export {
     IcOrder,
     IcOrderOff,
     IcProfile,
-    IcProfileOff
+    IcProfileOff,
+    IcStar,
+    IcStarOff
 };
