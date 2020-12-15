@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
         paddingTop: 80,
         flexDirection: 'row',
         alignItems: 'center',
-
     },
     back: {
         padding: 16,
