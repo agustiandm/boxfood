@@ -1,5 +1,9 @@
 import Header from './Header';
 import BottomNavigator from './BottomNavigator';
 import FoodCard from './FoodCard';
+import Rating from './Rating'
+import HomeTabSection from './HomeTabSection';
+import HomeProfile from './HomeProfile';
+import ItemListFood from './ItemListFood';
 
-export { Header, BottomNavigator, FoodCard };
+export { Header, BottomNavigator, FoodCard, HomeTabSection, HomeProfile, Rating, ItemListFood };
