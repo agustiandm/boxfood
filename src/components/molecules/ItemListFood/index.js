@@ -1,19 +1,21 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
-import { FoodDummy1 } from '../../../assets';
+import React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Rating from '../Rating';
 
 
-const ItemListFood = ({ image }) => {
+const ItemListFood = ({ image, onPress }) => {
     return (
-        <View style={styles.foodContainer}>
-            <Image style={styles.foodImage} source={image} />
-            <View style={styles.textContainer}>
-                <Text style={styles.nameFood}>Breakfast Food</Text>
-                <Text style={styles.priceFood}>Rp35.000</Text>
+        <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+            <View style={styles.foodContainer}>
+                <Image style={styles.foodImage} source={image} />
+                <View style={styles.textContainer}>
+                    <Text style={styles.nameFood}>Breakfast Food</Text>
+                    <Text style={styles.priceFood}>Rp35.000</Text>
+                </View>
+                <Rating />
             </View>
-            <Rating />
-        </View>
+        </TouchableOpacity >
     )
 }
 

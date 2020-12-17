@@ -6,7 +6,7 @@ import { FoodCard, Gap, HomeProfile, HomeTabSection } from '../../components'
 
 const Home = () => {
     return (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.page}>
                 <View>
                     <HomeProfile />

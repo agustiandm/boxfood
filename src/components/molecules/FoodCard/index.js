@@ -1,16 +1,19 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Rating } from '..'
 
 const FoodCard = ({ image }) => {
     return (
-        <View style={styles.cardContainer}>
-            <Image source={image} style={styles.image} />
-            <View style={styles.content}>
-                <Text style={styles.text}>Breakfast Food</Text>
-                <Rating />
+        <TouchableOpacity activeOpacity={0.7}>
+            <View style={styles.cardContainer}>
+                <Image source={image} style={styles.image} />
+                <View style={styles.content}>
+                    <Text style={styles.text}>Breakfast Food</Text>
+                    <Rating />
+                </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
