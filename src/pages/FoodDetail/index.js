@@ -1,16 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { FoodDummy1, IcBackWhite } from '../../assets'
+import { FoodDummy1, IcBack, IcBackWhite } from '../../assets'
 import { Button, Counter, Rating } from '../../components'
 
-const FoodDetail = () => {
+const FoodDetail = ({ navigation }) => {
     return (
         <View style={styles.page}>
             {/* <View backgroundColor='grey' borderRadius={50}> */}
             <ImageBackground source={FoodDummy1} style={styles.image}>
                 <TouchableOpacity style={styles.back} activeOpacity={0.7}>
-                    <IcBackWhite />
+                    <IcBack />
                 </TouchableOpacity>
             </ImageBackground>
             {/* </View> */}
@@ -38,7 +38,7 @@ const FoodDetail = () => {
                         <Text style={styles.priceLabel}>Rp35.000</Text>
                     </View>
                     <View style={styles.button}>
-                        <Button title="Order Now" />
+                        <Button title="Order Now" onPress={() => navigation.navigate('OrderSummary')} />
                     </View>
                 </View>
             </View>
@@ -55,16 +55,15 @@ const styles = StyleSheet.create({
     image: {
         height: 500,
         paddingTop: 60,
-        paddingLeft: 24,
-        borderRadius: 50,
+        paddingLeft: 18,
     },
     back: {
         height: 35,
         width: 35,
-        backgroundColor: 'grey',
+        backgroundColor: '#FBFBFB',
         borderRadius: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     content: {
         borderTopLeftRadius: 40,
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
         marginTop: -30,
         backgroundColor: 'white',
         paddingTop: 26,
-        paddingHorizontal: 16,
+        paddingHorizontal: 24,
         flex: 1
     },
     mainContent: {
@@ -82,13 +81,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 14
+        marginBottom: 15
     },
     foodName: {
-        fontSize: 16, fontWeight: '500', color: '#020202', marginBottom: 3
+        fontSize: 16, fontWeight: '500', color: '#020202', marginBottom: 4
     },
     descFood: {
-        fontSize: 14, fontWeight: 'normal', color: '#8D92A3', marginBottom: 15
+        fontSize: 14, fontWeight: 'normal', color: '#8D92A3', marginBottom: 16
     },
     label: {
         fontSize: 14,
@@ -108,7 +107,7 @@ const styles = StyleSheet.create({
         fontSize: 13, color: '#8D92A3', paddingBottom: 4
     },
     priceLabel: {
-        fontSize: 16, color: 'red'
+        fontSize: 18, color: 'red'
     },
     button: {
         height: 50,

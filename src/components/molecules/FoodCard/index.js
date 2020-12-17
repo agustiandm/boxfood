@@ -9,7 +9,7 @@ const FoodCard = ({ image }) => {
             <View style={styles.cardContainer}>
                 <Image source={image} style={styles.image} />
                 <View style={styles.content}>
-                    <Text style={styles.text}>Breakfast Food</Text>
+                    <Text style={styles.foodName}>Breakfast Food</Text>
                     <Rating />
                 </View>
             </View>
@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
         width: 200,
         backgroundColor: 'white',
         borderRadius: 10,
-        shadowColor: 'grey',
+        shadowColor: 'black',
         shadowOffset: { width: 0, height: 7 },
         shadowOpacity: 0.5,
-        shadowRadius: 10,
+        shadowRadius: 1,
         elevation: 14,
         overflow: 'hidden',
         marginRight: 16
@@ -39,12 +39,13 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
         borderBottomLeftRadius: 10
     },
-    text: {
+    foodName: {
         fontSize: 16,
         fontWeight: '500',
-        color: '#020202'
+        color: '#020202',
+        paddingBottom: 4
     },
     content: {
-        padding: 12
+        padding: 12,
     }
 })

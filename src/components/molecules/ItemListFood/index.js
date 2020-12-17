@@ -3,8 +3,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Rating from '../Rating';
 
-
-const ItemListFood = ({ image, onPress }) => {
+const ItemListFood = ({ image, onPress, items, ratings }) => {
     return (
         <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
             <View style={styles.foodContainer}>
@@ -13,7 +12,10 @@ const ItemListFood = ({ image, onPress }) => {
                     <Text style={styles.nameFood}>Breakfast Food</Text>
                     <Text style={styles.priceFood}>Rp35.000</Text>
                 </View>
-                <Rating />
+                {items && !ratings && <Text style={styles.items}>{items} items</Text>}
+                {/* kalau items true dan ratings false maka munculkan {jumlah items} item */}
+                {ratings && !items && <Rating />}
+                {/* kalau ratings true dan items false maka munculkan Rating */}
             </View>
         </TouchableOpacity >
     )
@@ -25,7 +27,6 @@ const styles = StyleSheet.create({
     foodContainer: {
         flexDirection: 'row',
         backgroundColor: 'white',
-        paddingHorizontal: 24,
         paddingVertical: 8,
         alignItems: 'center'
     },
@@ -45,6 +46,11 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     priceFood: {
+        fontSize: 14,
+        fontWeight: 'normal',
+        color: '#8D92A3'
+    },
+    items: {
         fontSize: 14,
         fontWeight: 'normal',
         color: '#8D92A3'

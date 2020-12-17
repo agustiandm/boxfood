@@ -31,12 +31,12 @@ export default Home
 
 const styles = StyleSheet.create({
     page: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#FBFBFB'
     },
-
     foodCardContainer: {
         flexDirection: 'row',
-        marginVertical: 16
+        marginVertical: 16,
     },
     tabContainer: {
         flex: 1
