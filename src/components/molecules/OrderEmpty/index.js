@@ -1,34 +1,32 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Il_SuccessOrder } from '../../assets'
-import { Button, Gap } from '../../components'
-const OrderSuccess = ({ navigation }) => {
+import { Il_OrderEmpty } from '../../../assets'
+import { Button, Gap } from '../../atoms'
+
+
+const OrderEmpty = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.page}>
-            <Il_SuccessOrder />
+            <Il_OrderEmpty />
             <Gap height={30} />
-            <Text style={styles.title}>You’ve Made Order</Text>
+            <Text style={styles.title}>Ouch! Hungry</Text>
             <Gap height={6} />
-            <Text style={styles.subTitle}>Just stay at home while we are</Text>
-            <Text style={styles.subTitle}>preparing your best foods</Text>
+            <Text style={styles.subTitle}>Seems like you have not</Text>
+            <Text style={styles.subTitle}>ordered any food yet</Text>
             <Gap height={30} />
             <View style={styles.buttonContainer}>
                 <Button
-                    title="Order Other Foods"
+                    title="Find Foods"
                     onPress={() => navigation.replace('MainApp')}
-                />
-                <Gap height={10} />
-                <Button
-                    title="View My Order"
-                    onPress={() => navigation.replace('MainApp', { screen: 'Order' })}
-                    color="#8D92A3"
                 />
             </View>
         </View>
     )
 }
 
-export default OrderSuccess
+export default OrderEmpty
 
 const styles = StyleSheet.create({
     page: {
@@ -36,6 +34,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         backgroundColor: 'white'
+
     },
     title: {
         fontSize: 20, color: '#020202'
