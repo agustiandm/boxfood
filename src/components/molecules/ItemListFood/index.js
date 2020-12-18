@@ -132,13 +132,15 @@ const styles = StyleSheet.create({
     date: {
         fontSize: 14,
         fontWeight: 'normal',
-        color: '#8D92A3'
+        color: '#8D92A3',
+        marginBottom: 4
     },
     status: {
         fontSize: 14,
         fontWeight: 'normal',
-        color: '#D9435E'
-    }
+        color: '#D9435E',
+        textAlign: 'right'
+    },
 })
 
 

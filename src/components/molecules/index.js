@@ -9,5 +9,7 @@ import Counter from './Counter';
 import ItemValue from './ItemValue';
 import OrderEmpty from './OrderEmpty';
 import OrderTabSection from './OrderTabSection';
+import ProfileTabSection from './ProfileTabSection';
+import ItemListMenu from './ItemListMenu'
 
-export { Header, BottomNavigator, FoodCard, HomeTabSection, HomeProfile, Rating, ItemListFood, Counter, ItemValue, OrderEmpty, OrderTabSection, };
+export { Header, BottomNavigator, FoodCard, HomeTabSection, HomeProfile, Rating, ItemListFood, Counter, ItemValue, OrderEmpty, OrderTabSection, ProfileTabSection, ItemListMenu };
