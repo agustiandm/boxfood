@@ -1,19 +1,37 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { OrderEmpty } from '../../components'
+import React, { useState } from 'react'
+import { StyleSheet, View, Text } from 'react-native'
+import { Header, OrderEmpty, OrderTabSection } from '../../components'
 
 const Order = () => {
+    const [isEmpty] = useState(false);
+
     return (
         <View style={styles.page}>
-            <OrderEmpty />
+            { isEmpty ? (
+                <OrderEmpty />
+            ) : (
+                    <View style={styles.content}>
+                        <Header title="Your Orders" subTitle="Wait for the best meal" />
+                        <View style={styles.tabContainer}>
+                            <OrderTabSection />
+                        </View>
+                    </View>
+                )}
         </View>
-    )
-}
+    );
+};
 
-export default Order
+export default Order;
 
 const styles = StyleSheet.create({
     page: {
         flex: 1
+    },
+    content: {
+        flex: 1,
+    },
+    tabContainer: {
+        flex: 1,
+        marginTop: 1,
     }
 })

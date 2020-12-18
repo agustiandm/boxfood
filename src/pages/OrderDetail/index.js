@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { FoodDummy1 } from '../../assets'
 import { Button, Gap, Header, ItemListFood, ItemValue } from '../../components'
 
-const OrderSummary = ({ navigation }) => {
+const OrderDetail = ({ navigation }) => {
     return (
         <ScrollView>
             <View style={styles.page}>
@@ -36,16 +36,21 @@ const OrderSummary = ({ navigation }) => {
                     <ItemValue label="House no." value="A17/10" />
                     <ItemValue label="City" value="Karawang Timur" />
                 </View>
+                <View style={styles.content}>
+                    <Text>Order Status:</Text>
+                    <ItemValue label="#FM10000" value="Paid" valueColor="#41830F" />
+                </View>
                 <View style={styles.button}>
-                    <Button title="Checkout Now" onPress={() => navigation.replace('OrderSuccess')} />
+                    <Button title="Cancel My Order" color="red" onPress={() => navigation.replace('OrderSuccess')} />
                 </View>
                 <Gap height={50} />
+
             </View>
         </ScrollView>
     )
 }
 
-export default OrderSummary
+export default OrderDetail
 
 const styles = StyleSheet.create({
     page: {

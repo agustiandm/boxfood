@@ -82,5 +82,7 @@ const styles = StyleSheet.create({
         paddingTop: 18,
         paddingHorizontal: 55,
         justifyContent: 'space-between',
+        borderTopWidth: 1,
+        borderColor: '#FBFBFB'
     }
 })
