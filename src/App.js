@@ -4,12 +4,16 @@ import { StyleSheet } from 'react-native';
 import 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Router from './router';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Router />
+      <Provider store={store}>
+        <Router />
+      </Provider>
     </NavigationContainer>
   );
 };

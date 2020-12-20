@@ -9,7 +9,7 @@ const initStateRegister = {
     phoneNumber: '',
 }
 
-export const registerReducer = (state, action) => {
+export const registerReducer = (state = initStateRegister, action) => {
     if (action.type === 'SET_REGISTER') {
         return {
             ...state,

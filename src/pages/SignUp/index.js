@@ -1,8 +1,12 @@
 import React from 'react'
 import { Text, StyleSheet, View } from 'react-native'
+import { useSelector } from 'react-redux'
 import { Header, TextInput, Gap, Button } from '../../components'
 
 const SignUp = ({ navigation }) => {
+    const globalState = useSelector(state => state.globalReducer);
+    console.log('global:', globalState)
+
     return (
         <View style={styles.page}>
             <Header
