@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput as TextInputRN } from 'react-native'
 
-const TextInput = ({ label, placeholder }) => {
+const TextInput = ({ label, placeholder, ...restProps }) => {
+    //titik tiga pada props, artinya menyiapkan props yang tidak didefinisikan secara ekplisit untuk disimpan di props ini
     return (
         <View>
             <Text style={styles.label}>{label}</Text>
-            <TextInputRN style={styles.input} placeholder={placeholder} />
+            <TextInputRN style={styles.input} placeholder={placeholder} {...restProps} />
         </View>
     )
 }

@@ -1,17 +1,54 @@
+import Axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Button, Gap, Header, TextInput } from '../../components'
+import useForm from '../../utils/useForm'
 
 const SignIn = ({ navigation }) => {
+
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // //State ini digunakan untuk menjadi value dalam input text
+
+    const [form, setForm] = useForm({
+        email: '',
+        password: ''
+    });
+
+    const onSubmit = () => {
+        console.log('form:', form);
+        Axios.post('http://foodmarket-backend.buildwithangga.id/api/login', form)
+            .then(res => {
+                console.log('success:', res);
+            })
+            .catch(err => {
+                console.log('error:', err);
+            })
+    };
+
     return (
         <View style={styles.page}>
             <Header title="Sign In" subTitle="Find your best ever meal" />
             <View style={styles.container}>
-                <TextInput label="Email" placeholder="Input email address" />
+                <TextInput
+                    label="Email"
+                    placeholder="Input email address"
+                    value={form.email}
+                    onChangeText={(value) => setForm('email', value)}
+
+                // onChangeText={(value) => setEmail(value)} //setiap kita merubah text input, maka akan dikirimkan value ke setEmail sehingga email merubah value sesuai yg kita inginkan
+                />
                 <Gap height={16} />
-                <TextInput label="Password" placeholder="Input password" />
+                <TextInput
+                    label="Password"
+                    placeholder="Input password"
+                    value={form.password}
+                    onChangeText={(value) => setForm('password', value)}
+                    secureTextEntry
+                />
                 <Gap height={50} />
-                <Button title="Sign In" />
+                <Button title="Sign In" onPress={onSubmit} />
                 <Gap height={12} />
                 <Button title="Create new account" color='#8D92A3' onPress={() => navigation.navigate('SignUp')} />
             </View>
