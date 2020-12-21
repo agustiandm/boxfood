@@ -1,23 +1,56 @@
 import React from 'react'
-import { Text, StyleSheet, View, ScrollView } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
-import { Header, TextInput, Gap, Button } from '../../components'
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useDispatch } from 'react-redux'
+import { Button, Gap, Header, TextInput } from '../../components'
 import useForm from '../../utils/useForm'
+import ImagePicker from 'react-native-image-picker';
+import { showMessage } from '../../utils'
+import { useState } from 'react'
+
 
 const SignUp = ({ navigation }) => {
+    const addImageProfile = () => {
+        ImagePicker.launchImageLibrary(
+            {
+                quality: 0.5,
+                maxWidth: 200,
+                maxHeight: 200
+            },
+            (response) => {
+                console.log('Response = ', response);
+
+                if (response.didCancel || response.error) {
+                    showMessage('Empty picker image')
+                } else {
+                    const source = { uri: response.uri };
+                    const dataImage = {
+                        uri: response.uri,
+                        type: response.type,
+                        name: response.fileName
+                    };
+                    setPhoto(source);
+                    dispatch({ type: 'SET_PHOTO', value: dataImage });
+                    dispatch({ type: 'SET_UPLOAD_STATUS', value: true });
+                }
+            });
+    };
+
     const [form, setForm] = useForm({
         name: '',
         email: '',
         password: '',
     });
 
+    const [photo, setPhoto] = useState('');
     const dispatch = useDispatch();
 
     const onSubmit = () => {
         console.log('form:', form)
         dispatch({ type: 'SET_REGISTER', value: form });
         navigation.navigate('SignUpAddress');
-    }
+    };
+
     return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
 
@@ -30,11 +63,17 @@ const SignUp = ({ navigation }) => {
 
                 <View style={styles.container}>
                     <View style={styles.photo}>
-                        <View style={styles.photoBorder}>
-                            <View style={styles.photoContainer}>
-                                <Text style={styles.addPhoto}>Add Photo</Text>
+                        <TouchableOpacity onPress={addImageProfile}>
+                            <View style={styles.photoBorder}>
+                                {photo ? (
+                                    <Image source={photo} style={styles.photoContainer} />
+                                ) : (
+                                        <View style={styles.photoContainer}>
+                                            <Text style={styles.addPhoto}>Add Photo</Text>
+                                        </View>
+                                    )}
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     <TextInput
                         label="Full Name"
@@ -106,10 +145,11 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 100,
         backgroundColor: '#F0F0F0',
-        padding: 24,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     addPhoto: {
-        fontSize: 14,
+        fontSize: 15,
         color: '#8D92A3',
         textAlign: 'center',
         paddingTop: 10

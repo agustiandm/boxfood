@@ -21,11 +21,9 @@ const SignIn = ({ navigation }) => {
         console.log('form:', form);
         Axios.post('http://foodmarket-backend.buildwithangga.id/api/login', form)
             .then(res => {
-                console.log('success:', res);
                 showToast('Sign In Success', 'success')
             })
             .catch(err => {
-                console.log('error:', err.response.data.message);
                 showToast(err?.response?.data?.message)
             })
     };
