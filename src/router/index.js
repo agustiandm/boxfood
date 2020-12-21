@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SignIn, SignUp, SplashScreen, SignUpAddress, SignUpSuccess, Home, Order, Profile, FoodDetail, OrderSummary, OrderSuccess, OrderDetail } from '../pages';
 import { BottomNavigator } from '../components';
 
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 

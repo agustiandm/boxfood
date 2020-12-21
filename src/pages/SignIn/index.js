@@ -1,9 +1,10 @@
 import Axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Button, Gap, Header, TextInput } from '../../components'
 import useForm from '../../utils/useForm'
+import { showMessage, hideMessage } from "react-native-flash-message";
+
 
 const SignIn = ({ navigation }) => {
 
@@ -21,11 +22,21 @@ const SignIn = ({ navigation }) => {
         Axios.post('http://foodmarket-backend.buildwithangga.id/api/login', form)
             .then(res => {
                 console.log('success:', res);
+                showToast('Sign In Success', 'success')
             })
             .catch(err => {
-                console.log('error:', err);
+                console.log('error:', err.response.data.message);
+                showToast(err?.response?.data?.message)
             })
     };
+
+    const showToast = (message, type) => {
+        showMessage({
+            message,
+            type: type === 'success' ? 'success' : 'danger',
+            backgroundColor: type === 'success' ? '#1ABC9C' : '#D9435E',
+        });
+    }
 
     return (
         <View style={styles.page}>
