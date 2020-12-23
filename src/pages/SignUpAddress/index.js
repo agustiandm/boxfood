@@ -3,6 +3,7 @@ import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Gap, Header, Select, TextInput } from '../../components'
+import { setLoading, signUpAction } from '../../redux/action';
 import { useForm, showMessage } from '../../utils'
 
 
@@ -22,37 +23,10 @@ const SignUpAddress = ({ navigation }) => {
         const data = {
             ...form,
             ...registerReducer
-        }
+        };
         console.log('registerReducer:', data)
-        Axios.post('http://foodmarket-backend.buildwithangga.id/api/register', data)
-            .then((res) => {
-                console.log('data success:', res.data);
-                if (photoReducer.isUpload) {
-
-                    const photoForUpload = new FormData();
-                    photoForUpload.append('file', photoReducer);
-                    Axios.post('http://foodmarket-backend.buildwithangga.id/api/user/photo', photoForUpload, {
-                        headers: {
-                            'Authorization': `${res.data.data.token_type} ${res.data.data.access_token}`,
-                            'Content-Type': 'multipart/form-data',
-                        }
-                    })
-                        .then((resUpload) => {
-                            console.log('success upload:', resUpload)
-                        })
-                        .catch((err) => {
-                            showMessage(
-                                err?.response?.message || 'Uplaod photo tidak berhasil',
-                            );
-                        });
-                }
-                dispatch({ type: 'SET_LOADING', value: false });
-                showMessage('Register Success', 'success');
-                navigation.replace('SignUpSuccess');
-            }).catch((err) => {
-                dispatch({ type: 'SET_LOADING', value: false });
-                showMessage(err?.response?.data?.message);
-            });
+        dispatch(setLoading(true));
+        dispatch(signUpAction(data, photoReducer, navigation));
     };
 
     return (
